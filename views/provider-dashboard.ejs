@@ -1,0 +1,29 @@
+<%- include('header') %>
+<div class="container mt-5">
+  <h2>Welcome <%= user.name %> (Provider)</h2>
+
+  <div class="mt-4">
+    <h4>Available Service Requests</h4>
+    <% if (requests.length > 0) { %>
+    <div class="list-group">
+      <% requests.forEach(request => { %>
+      <div class="list-group-item">
+        <p><%= request.description %></p>
+        <small class="text-muted">
+          Posted <%= request.createdAt.toLocaleDateString() %>
+        </small>
+        <form action="/accept-request" method="POST" class="mt-2">
+          <input type="hidden" name="requestId" value="<%= request._id %>" />
+          <button type="submit" class="btn btn-sm btn-success">
+            Accept Request
+          </button>
+        </form>
+      </div>
+      <% }) %>
+    </div>
+    <% } else { %>
+    <p>No open requests available.</p>
+    <% } %>
+  </div>
+</div>
+<%- include('footer') %>

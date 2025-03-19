@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('layout', { title: 'Login' }) %>
+<h1>Login</h1>
+<% if (error) { %>
+  <div class="alert"><%= error %></div>
+<% } %>
+<form action="/login" method="POST">
+  <input type="email" name="email" placeholder="Email" required>
+  <input type="password" name="password" placeholder="Password" required>
+  <button type="submit">Login</button>
+</form>
+
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card shadow">
+            <div class="card-body">
+              <h2 class="card-title mb-4">Login</h2>
+              <% if (error) { %>
+              <div class="alert alert-danger"><%= error %></div>
+              <% } %>
+
+              <form action="/login" method="POST">
+                <div class="mb-3">
+                  <label class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    value="<%= email %>"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    required
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary w-100">
+                  Login
+                </button>
+              </form>
+
+              <div class="mt-3 text-center">
+                <span class="text-muted">Don't have an account? </span>
+                <a href="/register">Register here</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

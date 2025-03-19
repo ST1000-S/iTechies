@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/header') %>
+    <title>Dashboard - iTechies</title>
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+
+    <div class="container mt-4">
+      <h2>Welcome, <%= user.name %></h2>
+
+      <% if (user.role === 'provider') { %>
+      <!-- Provider Content -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Provider Tools</h5>
+          <a href="/services" class="btn btn-primary">View Requests</a>
+        </div>
+      </div>
+      <% } else { %>
+      <!-- Customer Content -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Customer Tools</h5>
+          <a href="/request-service" class="btn btn-success">New Request</a>
+          <a href="/my-requests" class="btn btn-info">My Requests</a>
+        </div>
+      </div>
+      <% } %>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

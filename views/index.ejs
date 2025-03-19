@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('layout', { title: 'Home' }) %>
+<h1>Welcome to iTechies</h1>
+<p>Find technical service providers or offer your services!</p>
+
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <h1 class="display-4 mb-4">Welcome to iTechies</h1>
+          <p class="lead">Connect with IT professionals or find clients</p>
+          <div class="mt-4">
+            <a href="/register" class="btn btn-primary btn-lg mx-2"
+              >Get Started</a
+            >
+            <a href="/login" class="btn btn-outline-secondary btn-lg mx-2"
+              >Login</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

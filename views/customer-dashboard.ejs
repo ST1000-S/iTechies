@@ -1,0 +1,40 @@
+<%- include('header') %>
+<div class="container mt-5">
+  <h2>Welcome <%= user.name %> (Customer)</h2>
+
+  <div class="card mt-4">
+    <div class="card-body">
+      <h5 class="card-title">New Service Request</h5>
+      <form action="/submit-request" method="POST">
+        <div class="mb-3">
+          <label class="form-label">Service Needed</label>
+          <textarea class="form-control" name="description" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Request</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="mt-5">
+    <h4>Your Service Requests</h4>
+    <% if (requests.length > 0) { %>
+      <div class="list-group">
+        <% requests.forEach(request => { %>
+          <div class="list-group-item">
+            <p><%= request.description %></p>
+            <small class="text-muted">
+              Status: <span class="badge bg-<%= 
+                request.status === 'open' ? 'warning' :
+                request.status === 'accepted' ? 'primary' : 'success' 
+              %>"><%= request.status %></span>
+              • <%= request.createdAt.toLocaleDateString() %>
+            </small>
+          </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <p>No service requests yet.</p>
+    <% } %>
+  </div>
+</div>
+<%- include('footer') %>

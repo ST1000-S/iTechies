@@ -1,0 +1,6 @@
+{"level":"info","message":"Registration successful: customer1@test.com"}
+{"level":"info","message":"Registration successful: provider1@test.com"}
+{"level":"info","message":"Login successful: customer1@test.com"}
+{"level":"info","message":"Login successful: provider1@test.com"}
+{"level":"error","message":"Request creation failed: Forbidden"}
+{"level":"info","message":"All tests completed!"}

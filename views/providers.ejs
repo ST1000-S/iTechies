@@ -1,0 +1,32 @@
+<!-- Search Input -->
+<div class="mb-4">
+  <input
+    type="text"
+    id="searchInput"
+    class="form-control"
+    placeholder="Search providers..."
+  />
+</div>
+
+<!-- Results Container -->
+<div id="searchResults">
+  <!-- Initial provider list -->
+  <% providers.forEach(provider => { %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5><%= provider.name %></h5>
+      <p>Skills: <%= provider.skills.join(', ') %></p>
+      <p>Location: <%= provider.location %></p>
+    </div>
+  </div>
+  <% }) %>
+</div>
+
+<!-- Hidden Providers Data -->
+<script id="providers-data" type="application/json">
+  <%- JSON.stringify(providers) %>
+</script>
+
+<!-- Include Lunr and Search Script -->
+<script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script>
+<script src="/js/search.js"></script>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+    <title>iTechies - Register</title>
+</head>
+<body class="bg-light">
+    <%- include('partials/nav') %>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h2 class="card-title mb-4">Register</h2>
+                        <% if (error) { %>
+                            <div class="alert alert-danger"><%= error %></div>
+                        <% } %>
+
+                        <form action="/register" method="POST">
+                            <div class="mb-3">
+                                <label class="form-label">Name</label>
+                                <input type="text" class="form-control" name="name" value="<%= formData.name %>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" name="email" value="<%= formData.email %>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-control" name="password" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Role</label>
+                                <select class="form-select" name="role" required>
+                                    <option value="customer" <%= formData.role === 'customer' ? 'selected' : '' %>>Customer</option>
+                                    <option value="provider" <%= formData.role === 'provider' ? 'selected' : '' %>>Service Provider</option>
+                                </select>
+                            </div>
+                            <div class="provider-fields" id="providerFields">
+                                <div class="mb-3">
+                                    <label class="form-label">Skills (comma separated)</label>
+                                    <input type="text" class="form-control" name="skills" value="<%= formData.skills %>">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Location</label>
+                                    <input type="text" class="form-control" name="location" value="<%= formData.location %>">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Register</button>
+                        </form>
+
+                        <div class="mt-3 text-center">
+                            <span class="text-muted">Already have an account? </span>
+                            <a href="/login">Login here</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>
+    
+    <script>
+        // Show/hide provider fields based on role selection
+        document.querySelector('select[name="role"]').addEventListener('change', function() {
+            document.getElementById('providerFields').style.display = 
+                this.value === 'provider' ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>
